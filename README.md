@@ -20,7 +20,7 @@ Visiting the site with a browser that does not require the polyfill (such as Goo
 log messages to the console reflecting the expected behaviour. The correct `URLSearchParams` object will be returned
 and the sample *POST* request will have used the correct `Content-Type` header `application/x-www-form-urlencoded`.
 
-However, visigint the site with a browser that does require the polyfill (such as Safari on iOS or the iOS Simulator)
+However, visiting the site with a browser that does require the polyfill (such as Safari on iOS or the iOS Simulator)
 will log messages to the console indicating a mysterious `o` type instead of the expected `URLSearchParams`, and the
 sample *POST* request will have used the incorrect `Content-Type` header of `text/plain`.
 
