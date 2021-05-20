@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, viewport-fit=cover" />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script>
+      const params = new URLSearchParams('foo=1&bar=2')
+      console.log(params)
+
+      if (params._list) {
+        console.warn('You should be seeing the mysterious `o` type above as it looks like the polyfill is active on this device.')
+      } else {
+        console.info("You should be seeing the correct `URLSearchParams` type above as it doesn't look like the polyfill is active on this device.")
+        console.info('Try loading this page in Safari on an iOS device (or in the iOS Simulator) with the console open to see the bug.')
+      }
+
+      console.info('---')
+      console.info("We'll now send a sample POST request to /mirror which responds with the requested Content-Type header.")
+
+      fetch('/mirror', {
+        method: 'POST',
+        body: params
+      }).then((response) => {
+        response.json().then((data) => {
+          const contentType = data.contentType.split(';')[0]
+          if (contentType === 'application/x-www-form-urlencoded') {
+            console.log(`The POST request responded with a Content-Type of ${contentType} which is correct.`)
+          } else {
+            console.error(`The POST request responded with a Content-Type of ${contentType} which is NOT correct.`)
+          }
+        }).catch((error) => {
+          console.error(error)
+        })
+      }).catch((error) => {
+        console.error(error)
+      })
+    </script>
+    <title>[Bug] URLSearchParams, Fetch API, Content-Type</title>
+  </head>
+  <body>
+    <p>Launch a JavaScript console, then reload this page to see the bug.</p>
+  </body>
+</html>

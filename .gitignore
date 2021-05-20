@@ -1,0 +1,35 @@
+# OS Files
+.DS_Store
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Dependencies
+node_modules
+
+# Build files
+/dist
+
+# Workers files
+wrangler.toml
+/workers-site/worker
+
+# Environment
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editors
+.idea
+.nova
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
